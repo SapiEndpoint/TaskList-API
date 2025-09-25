@@ -1,7 +1,7 @@
 # 🚀 TaskList API
 
 API backend per la gestione di task personali e di team, sviluppata in C# con ASP.NET Core.  
-Permette di visualizzare/filtrare taskGET, mentre le altre operazioni CRUD sono in fase di sviluppo.
+Permette di visualizzare/filtrare task o utenti con GET, mentre le altre operazioni CRUD sono in fase di sviluppo.
 
 ---
 
