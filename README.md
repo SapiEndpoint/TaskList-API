@@ -9,7 +9,7 @@ Permette di visualizzare/filtrare taskGET, mentre le altre operazioni CRUD sono 
 
 ![C#](https://img.shields.io/badge/C%23-239120?logo=c-sharp&logoColor=white) 
 ![ASP.NET Core](https://img.shields.io/badge/ASP.NET-Core-512BD4?logo=dot-net&logoColor=white) 
-![Stato](https://img.shields.io/badge/Features-GET_only-yellow) �
+![Stato](https://img.shields.io/badge/Features-GET_only-yellow)
 ![Roadmap](https://img.shields.io/badge/CRUD-in%20development-orange) 
 
 ---
