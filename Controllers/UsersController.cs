@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using TaskList.Interfaces;
+using TaskList.Dto;
 
 
 namespace TaskList.Controllers
@@ -9,17 +11,19 @@ namespace TaskList.Controllers
 
     public class UsersController : Controller
     {
-        private readonly IUsersRepository _usrRepository;       
+        private readonly IUsersRepository _usrRepository;
+        private readonly IMapper _mapper;
 
-        public UsersController(IUsersRepository usersRepository)        
+        public UsersController(IUsersRepository usersRepository, IMapper mapper)
         {
             _usrRepository = usersRepository;
+            _mapper = mapper;
         }
 
         [HttpGet]
         public IActionResult GetUsers()
         {
-            var users = _usrRepository.GetUsers();
+            var users = _mapper.Map<List<UserNoId>>(_usrRepository.GetUsers());
 
             return Ok(users);
         }
@@ -27,7 +31,7 @@ namespace TaskList.Controllers
         [HttpGet("{id}")]       
         public IActionResult GetUserById(int id)
         {
-            var user = _usrRepository.GetUserById(id);
+            var user = _mapper.Map<UserNoId>(_usrRepository.GetUserById(id));
 
             return Ok(user);
         }
@@ -35,7 +39,7 @@ namespace TaskList.Controllers
         [HttpGet("lastname/{lastname}")]
         public IActionResult GetUserByLastname(string lastname)
         {
-            var user = _usrRepository.GetUserByLastname(lastname);
+            var user = _mapper.Map<UserNoId>(_usrRepository.GetUserByLastname(lastname));
             return Ok(user);
         }   
     }
