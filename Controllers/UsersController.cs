@@ -6,7 +6,7 @@ using TaskList.Dto;
 
 namespace TaskList.Controllers
 {
-    [Route("api/users")]     
+    [Route("users")]     
     [ApiController]                
 
     public class UsersController : Controller

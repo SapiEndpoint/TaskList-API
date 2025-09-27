@@ -6,7 +6,7 @@ using TaskList.Interfaces;
 
 namespace TaskList.Controllers 
 {
-    [Route("api/task")]
+    [Route("task")]
     [ApiController]
 
     public class TaskController : Controller
