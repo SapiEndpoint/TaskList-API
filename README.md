@@ -15,11 +15,11 @@ Permette di visualizzare/filtrare task o utenti con GET, mentre le altre operazi
 ---
 
 ## 🌟 Features attuali
-- ✅ `GET /api/tasks` → lista tutti i task
-- ✅ `GET /api/tasks/{id}` → filtra la task per l'id
-- ✅ `GET /api/users` → lista tutti gli utenti
-- ✅ `GET /api/users/{id}` → filtra l'utente per l'id
-- ✅ `GET /api/users/lastname/{lastname}` → filtra l'utente per il proprio cognome (da gestire)
+- ✅ `GET /tasks` → lista tutti i task
+- ✅ `GET /tasks/{id}` → filtra la task per l'id
+- ✅ `GET /users` → lista tutti gli utenti
+- ✅ `GET /users/{id}` → filtra l'utente per l'id
+- ✅ `GET /users/lastname/{lastname}` → filtra l'utente per il proprio cognome (da gestire)
 - 🔧`Altre operazioni CRUD` → in sviluppo 
 
 ---
