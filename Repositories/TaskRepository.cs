@@ -10,17 +10,27 @@ namespace TaskList.Repositories
 
         public TaskRepository(DataContext context)
         {
-            _context = context;                 
+            _context = context;
         }
 
-        public ICollection<TaskManagement> GetTasks()           
+        public IEnumerable<TaskManagement> GetTasks()
         {
             return _context.TaskManagements.OrderBy(t => t.IdTask).ToList();
         }
 
-        public TaskManagement GetTaskByTaskId(int id)           
+        public TaskManagement GetTaskByTaskId(int id)
         {
             return _context.TaskManagements.Where(t => t.IdTask == id).FirstOrDefault()!;
+        }
+
+        public bool GetTaskExist(int id)
+        {
+            return _context.TaskManagements.Any(t => t.IdTask == id);
+        }
+
+        public IEnumerable<TaskManagement> GetTaskByUserId(int userId)
+        {
+            return _context.TaskManagements.Where(u => u.IdUser == userId).ToList();   
         }
     }
 }

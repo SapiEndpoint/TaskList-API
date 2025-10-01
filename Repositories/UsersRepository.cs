@@ -8,24 +8,29 @@ namespace TaskList.Repositories
     {
         private readonly DataContext _context;
 
-        public UsersRepository(DataContext context)        
+        public UsersRepository(DataContext context)
         {
-            _context = context;                
+            _context = context;
         }
 
-        public ICollection<Users> GetUsers()
+        public IEnumerable<Users> GetUsers()
         {
-            return _context.User.OrderBy(p => p.IdUser).ToList();      
+            return _context.User.OrderBy(p => p.IdUser).ToList();
         }
 
         public Users GetUserById(int id)
         {
-            return _context.User.Where(p => p.IdUser == id).FirstOrDefault()!; 
+            return _context.User.Where(p => p.IdUser == id).FirstOrDefault()!;
         }
 
         public Users GetUserByLastname(string lastName)
         {
             return _context.User.Where(u => u.LastName == lastName).FirstOrDefault()!;
+        }
+        
+        public bool GetUserExist(int id)
+        {
+            return _context.User.Any(u => u.IdUser == id);
         }
     }
 }

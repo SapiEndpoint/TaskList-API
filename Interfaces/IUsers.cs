@@ -2,10 +2,11 @@
 
 namespace TaskList.Interfaces
 {
-    public interface IUsersRepository       
+    public interface IUsersRepository
     {
-        ICollection<Users> GetUsers();      
-        Users GetUserById(int id);              
-        Users GetUserByLastname(string lastName);    
+        IEnumerable<Users> GetUsers();
+        Users GetUserById(int id);
+        Users GetUserByLastname(string lastName);   
+        bool GetUserExist(int id); 
     }
 }
