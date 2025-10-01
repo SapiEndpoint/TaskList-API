@@ -20,7 +20,9 @@ Permette di visualizzare/filtrare task o utenti con GET, mentre le altre operazi
 - ✅ `GET /users` → lista tutti gli utenti
 - ✅ `GET /users/{id}` → filtra l'utente per l'id
 - ✅ `GET /users/lastname/{lastname}` → filtra l'utente per il proprio cognome (da gestire)
-- 🔧`Altre operazioni CRUD` → in sviluppo 
+- ✅ `Exists` → controllo esistenza task o utente per id
+- ✅ Gestione `NotFound` nei controller con `if` di controllo
+- 🔧 `POST`, `PUT`, `DELETE` → in sviluppo
 
 ---
 
