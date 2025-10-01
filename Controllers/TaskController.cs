@@ -4,7 +4,7 @@ using TaskList.Dto;
 using TaskList.Interfaces;
 
 
-namespace TaskList.Controllers 
+namespace TaskList.Controllers
 {
     [Route("task")]
     [ApiController]
@@ -21,7 +21,7 @@ namespace TaskList.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetTasks()           
+        public IActionResult GetTasks()
         {
             var task = _mapper.Map<List<TaskNoId>>(_taskRepository.GetTasks());
             return Ok(task);
@@ -30,8 +30,19 @@ namespace TaskList.Controllers
         [HttpGet("{id}")]
         public IActionResult GetTaskByTaskId(int id)
         {
-            var tasks = _mapper.Map<TaskNoId>(_taskRepository.GetTaskByTaskId(id));
-            return Ok(tasks);
+            var task = _mapper.Map<TaskNoId>(_taskRepository.GetTaskByTaskId(id));
+            if (task == null)
+            {
+                return NotFound($"Task con l'id {id} non trovata.");
+            }
+            return Ok(task);
+        }
+
+        [HttpGet("exist/{id}")]
+        public IActionResult GetTaskExist(int id)
+        {
+            bool exist = _taskRepository.GetTaskExist(id);
+            return Ok(exist);
         }
     }
 }
