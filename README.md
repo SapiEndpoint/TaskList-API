@@ -1,7 +1,8 @@
 # 🚀 TaskList API
 
 API backend per la gestione di task personali e di team, sviluppata in C# con ASP.NET Core.  
-Permette di visualizzare/filtrare task o utenti con GET, mentre le altre operazioni CRUD sono in fase di sviluppo.
+Permette di visualizzare/filtrare task o utenti con GET e aggiungere nuovi elementi con POST, completo di validazione dei dati tramite Data Annotations. 
+Le operazioni PUT e DELETE sono in sviluppo.
 
 ---
 
@@ -22,7 +23,9 @@ Permette di visualizzare/filtrare task o utenti con GET, mentre le altre operazi
 - ✅ `GET /users/lastname/{lastname}` → filtra l'utente per il proprio cognome (da gestire)
 - ✅ `Exists` → controllo esistenza task o utente per id
 - ✅ Gestione `NotFound` nei controller con `if` di controllo
-- 🔧 `POST`, `PUT`, `DELETE` → in sviluppo
+- ✅ `POST /users`, `POST /tasks` → creazione nuovi record con validazione dati tramite Data Annotations
+- 🧩 Gestione DTO e mapping con AutoMapper
+- 🔧 `PUT`, `DELETE` → in sviluppo
 
 ---
 
@@ -34,9 +37,27 @@ Permette di visualizzare/filtrare task o utenti con GET, mentre le altre operazi
 
 ---
 
+## 🧩 Implementazioni recenti
+- Aggiunto metodo **POST** in interfacce, repository e controller con supporto `[FromBody]`
+- Creati **DTO** per la gestione dei dati in input e configurata la mappatura con **AutoMapper**
+- Implementata **validazione dei dati** tramite **Data Annotations** con messaggi d’errore personalizzati
+- Aggiornata richiesta **GET /users** per includere anche `IdUser` nella risposta
+
+---
+
 ## 🚧 Roadmap
-- Completamento delle operazioni POST, PUT e DELETE  
-- Implementazione di autenticazione e autorizzazione con JWT / Identity  
+- ✅ Completamento del metodo POST con DTO, mapping e validazione
+- 🔧 Implementazione PUT e DELETE
+- 🔐 Autenticazione e autorizzazione con JWT / Identity
+
+---
+
+## 🧠 Tecnologie e concetti chiave
+- ASP.NET Core MVC
+- Entity Framework Core
+- AutoMapper
+- DTO Pattern
+- Data Annotations (Validazione lato server)
 
 ---
 
