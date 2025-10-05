@@ -8,7 +8,7 @@ namespace TaskList.Mapper
     {
         public UserGet()
         {
-            CreateMap<Users, UserNoId>();
+            CreateMap<Users, User>();
         }
     }
 }
