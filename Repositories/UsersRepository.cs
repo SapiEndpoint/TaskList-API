@@ -27,10 +27,16 @@ namespace TaskList.Repositories
         {
             return _context.User.Where(u => u.LastName == lastName).FirstOrDefault()!;
         }
-        
+
         public bool GetUserExist(int id)
         {
             return _context.User.Any(u => u.IdUser == id);
+        }
+
+        public bool AddUser(Users user)
+        {
+            _context.Add(user);
+            return _context.SaveChanges() > 0;
         }
     }
 }

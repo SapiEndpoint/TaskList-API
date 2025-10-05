@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskList.Interfaces;
 using TaskList.Dto;
-
+using TaskList.Models;
 
 namespace TaskList.Controllers
 {
@@ -23,7 +23,7 @@ namespace TaskList.Controllers
         [HttpGet]
         public IActionResult GetUsers()
         {
-            var users = _mapper.Map<List<UserNoId>>(_usrRepository.GetUsers());
+            var users = _mapper.Map<List<User>>(_usrRepository.GetUsers());
 
             return Ok(users);
         }
@@ -31,7 +31,7 @@ namespace TaskList.Controllers
         [HttpGet("{id}")]
         public IActionResult GetUserById(int id)
         {
-            var user = _mapper.Map<UserNoId>(_usrRepository.GetUserById(id));
+            var user = _mapper.Map<User>(_usrRepository.GetUserById(id));
 
             if (user == null)
             {
@@ -43,7 +43,7 @@ namespace TaskList.Controllers
         [HttpGet("lastname/{lastname}")]
         public IActionResult GetUserByLastname(string lastname)
         {
-            var user = _mapper.Map<UserNoId>(_usrRepository.GetUserByLastname(lastname));
+            var user = _mapper.Map<User>(_usrRepository.GetUserByLastname(lastname));
 
             if (user == null)
             {
@@ -58,6 +58,13 @@ namespace TaskList.Controllers
             bool exist = _usrRepository.GetUserExist(id);
 
             return Ok(exist);
+        }
+
+        [HttpPost]
+        public IActionResult AddUser([FromBody] AddUserDTO userDTO)
+        {
+            var user = _mapper.Map<Users>(userDTO);
+            return Ok(user);
         }
     }
 }

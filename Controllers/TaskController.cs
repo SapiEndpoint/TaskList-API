@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using TaskList.Dto;
 using TaskList.Interfaces;
+using TaskList.Models;
 
 
 namespace TaskList.Controllers
@@ -43,6 +44,13 @@ namespace TaskList.Controllers
         {
             bool exist = _taskRepository.GetTaskExist(id);
             return Ok(exist);
+        }
+
+        [HttpPost]
+        public IActionResult AddTask([FromBody] AddTaskDTO taskDTO)
+        {
+            var task = _mapper.Map<TaskManagement>(taskDTO);
+            return Ok(task);
         }
     }
 }

@@ -6,7 +6,8 @@ namespace TaskList.Interfaces
     {
         IEnumerable<Users> GetUsers();
         Users GetUserById(int id);
-        Users GetUserByLastname(string lastName);   
-        bool GetUserExist(int id); 
+        Users GetUserByLastname(string lastName);
+        bool GetUserExist(int id);
+        bool AddUser(Users user); 
     }
 }

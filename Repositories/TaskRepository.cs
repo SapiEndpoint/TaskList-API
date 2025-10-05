@@ -30,7 +30,13 @@ namespace TaskList.Repositories
 
         public IEnumerable<TaskManagement> GetTaskByUserId(int userId)
         {
-            return _context.TaskManagements.Where(u => u.IdUser == userId).ToList();   
+            return _context.TaskManagements.Where(u => u.IdUser == userId).ToList();
+        }
+
+        public bool AddTask(TaskManagement task)
+        {
+            _context.Add(task);
+            return _context.SaveChanges() > 0;
         }
     }
 }
