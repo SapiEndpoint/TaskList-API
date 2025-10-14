@@ -5,8 +5,9 @@ namespace TaskList.Interfaces
     public interface ITask
     {
         IEnumerable<TaskManagement> GetTasks();
-        TaskManagement GetTaskByTaskId(int id);
+        TaskManagement GetTaskById(int id);
         bool GetTaskExist(int id);
+        public IEnumerable<TaskManagement> GetTaskByUserId(int userId);
         bool AddTask(TaskManagement task);
     }
 }
