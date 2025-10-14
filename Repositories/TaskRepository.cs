@@ -18,7 +18,7 @@ namespace TaskList.Repositories
             return _context.TaskManagements.OrderBy(t => t.IdTask).ToList();
         }
 
-        public TaskManagement GetTaskByTaskId(int id)
+        public TaskManagement GetTaskById(int id)
         {
             return _context.TaskManagements.Where(t => t.IdTask == id).FirstOrDefault()!;
         }
