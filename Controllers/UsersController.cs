@@ -6,7 +6,7 @@ using TaskList.Models;
 
 namespace TaskList.Controllers
 {
-    [Route("users")]
+    [Route("user")]
     [ApiController]
 
     public class UsersController : Controller
@@ -20,10 +20,13 @@ namespace TaskList.Controllers
             _mapper = mapper;
         }
 
-        [HttpGet]
+        [HttpGet("/users")]
         public IActionResult GetUsers()
         {
             var users = _mapper.Map<List<User>>(_usrRepository.GetUsers());
+
+            if (!users.Any())
+                return Ok(new { message = "Utenti non trovati.", data = users });
 
             return Ok(users);
         }
@@ -34,9 +37,9 @@ namespace TaskList.Controllers
             var user = _mapper.Map<User>(_usrRepository.GetUserById(id));
 
             if (user == null)
-            {
-                return NotFound($"L'id utente {id} non trovato");
-            }
+                return NotFound(new { message = $"L'id utente {id} non trovato" });
+
+
             return Ok(user);
         }
 
@@ -46,9 +49,8 @@ namespace TaskList.Controllers
             var user = _mapper.Map<User>(_usrRepository.GetUserByLastname(lastname));
 
             if (user == null)
-            {
-                return NotFound($"Il cognome utente {lastname} non e' trovato");
-            }
+                return NotFound(new { message = $"Il cognome utente {lastname} non e' trovato" });
+            
             return Ok(user);
         }
 
@@ -63,8 +65,16 @@ namespace TaskList.Controllers
         [HttpPost]
         public IActionResult AddUser([FromBody] AddUserDTO userDTO)
         {
+            if (!ModelState.IsValid)
+                return BadRequest(ModelState);
+
             var user = _mapper.Map<Users>(userDTO);
-            return Ok(user);
+
+            return CreatedAtAction(
+                nameof(GetUserById),
+                new { id = user.IdUser },
+                user
+            );
         }
     }
 }
